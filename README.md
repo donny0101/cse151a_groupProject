@@ -5,7 +5,9 @@ summer session 1  2024
 The ISIC 2024 Skin Cancer Detection with 3D Total Body Photos (TBP) dataset aims to help clinicians in determining if patients are developing or have skin cancer to help with early detection of the disease. The dataset includes images of skin lesions which vary in range of severity from benign to malignant. The goal of our project is to create a model which can determine the probability (between 0 and 1) that the pictured skin lesion is malignant. To do so, we plan to explore pre-trained CNN models such as ResNet or ImageNet to train on the given train and test images. We will also explore building our own CNN model from scratch. We also plan to employ ensemble learning, combining multiple models together, to yield better performance for predicting probability that the case is malignant. 
 
 ## Data Exploration: 
-Our initial data exploration was more focused on the metadata associated with the images than the images themselves. To begin with, distributions of features deemed most critical were plotted in order to understand existing trends or biases. An immediate trend noticed was that there were significantly more males than females present in the dataset. 
+Our initial data exploration was more focused on the metadata associated with the images than the images themselves. This allows to survey the full dataset in terms of feature analysis without having to actually parse all of the images (which would be infeasible given our time-constraints). However, it might be worth to later resample and recreate these figures with direct image data once we're able to. Compliance with the metadata trends would also suggest that our image parsing is accurate in terms of the relevant features. 
+
+To begin with, distributions of features deemed most critical were plotted in order to understand existing trends or biases. An immediate trend noticed was that there were significantly more males than females present in the dataset. 
 
 <img src="male_female.png" width="700"> <br>
 
