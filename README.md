@@ -18,11 +18,11 @@ As for hair removal we will implement a common hair removal technique called gen
 #### Identifying Thin and Long Structures:
 - Create a binary image by thresholding the closed image.
 - Use connected component analysis to identify regions.
-#### Filter regions based on their aspect ratio to identify thin and long structures.
-- Bilinear Interpolation:
+- Filter regions based on their aspect ratio to identify thin and long structures.
+#### Bilinear Interpolation:
 - Create a mask for identified hair pixels.
+- Use surrounding non-hair pixels to interpolate and replace hair pixels with smoothed values. <br>
 
-Use surrounding non-hair pixels to interpolate and replace hair pixels with smoothed values. <br>
 <img src="https://github.com/donny0101/cse151a_groupProject/blob/main/hair_removal.png" width="500"> <br>
 Hair removal can significantly help our model classification accuracy as they act as physical noise. 
 
