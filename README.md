@@ -9,7 +9,7 @@ Our initial data exploration was more focused on the metadata associated with th
 
 <img src="male_female.png" width="700"> <br>
 
-We can also see that most of the samples in the data are from regions outside the head. The head is underrepresented in the dataset and might be difficult to predict from our model. 
+We can also see that most of the samples in the data are from regions outside the head. The head is underrepresented in the dataset and might be difficult to predict from our model. These kinds of skews in terms of sampling need to be more thoroughly examined and iteratively reassessed as we continually improve the model to potentially reweight traits and prevent overfitting to specific regions (or sexes).
 
 <img src="region.png" width="700"> <br>
 
@@ -18,7 +18,7 @@ Additionally, the correlation matrix and corresponding dendrogram showed us that
 <img src="corr_matrix.png" width="700"> <br>
 <img src="dendrogram.png" width="700"> <br>
 
-The pairplot showcases a number of potential correlations, including some that seem directly linear. These features are worth analyzing and might even be worth preserving as is. 
+The pairplot showcases a number of potential correlations, including some that seem directly linear. These features are worth analyzing and might even be worth preserving as is. However, it is important to note that the directly linearly correlated features also tend to be features that might be best clustered together via PCA and are similar to the examples present in the dendrogram. 
 
 <img src="pairplot_high_res.png" width="700"> <br>
 
