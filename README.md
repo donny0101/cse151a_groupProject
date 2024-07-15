@@ -7,7 +7,7 @@ The ISIC 2024 Skin Cancer Detection with 3D Total Body Photos (TBP) dataset aims
 ## For preprocessing we plan to implement the following:
 
 Through EDA we have seen that there is a great class imbalance, so in turn we plan to apply affine transformations to our images using the keras ImageDataGenerator which makes batches of  tensor image data with real-time data augmentation. More simply it will create variation of data. We will implement transformations such as rotation, brightness, shear, zoom in, and reflection. 
-![plot](image_augmentation.png)
+![plot](image_augmentation.png| width=100)
 Continuing there are some preprocessing techniques that are standard for skin cancer data sets such as the one we are using. Most notably we plan to implement enhancement and hair removal methods (time permitting). More specifically for enhancement we plan to use histogram equalization for contrast optimisation through OpenCV.
 As for hair removal we will implement a common hair removal technique called generalized grayscale morphological closure operation . This process happens by performing a dilation followed by an erosion on a grayscale image. We found it in published research that summarized preprocessing techniques for skin cancer data (IEEE, 2019). Here are the steps: 
 Grayscale Morphological Closure:
@@ -20,7 +20,7 @@ Filter regions based on their aspect ratio to identify thin and long structures.
 Bilinear Interpolation:
 Create a mask for identified hair pixels.
 Use surrounding non-hair pixels to interpolate and replace hair pixels with smoothed values.
-![hair removal](hair_removal.png)
+![hair removal](hair_removal.png| width=100)
 Hair removal can significantly help our model classification accuracy as they act as physical noise. 
 
 Finally depending on the model we decide to make we may try segmentation techniques, however like hair removal it will be time permitting. 
