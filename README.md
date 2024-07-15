@@ -20,7 +20,7 @@ Filter regions based on their aspect ratio to identify thin and long structures.
 Bilinear Interpolation:
 Create a mask for identified hair pixels.
 Use surrounding non-hair pixels to interpolate and replace hair pixels with smoothed values.
-<img src="https://github.com/donny0101/cse151a_groupProject/blob/main/hair_removal.png" width="700">
+<img src="https://github.com/donny0101/cse151a_groupProject/blob/main/hair_removal.png" width="500">
 Hair removal can significantly help our model classification accuracy as they act as physical noise. 
 
 Finally depending on the model we decide to make we may try segmentation techniques, however like hair removal it will be time permitting. 
