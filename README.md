@@ -54,9 +54,20 @@ All these methods should set up our data very well as long as we are mindful not
 
 ### Updates:
 
+### How can we improve our current Model? 
+Improvements to the current model would primarily consist of data augmentation and data pre-processing impmrovements. To prevent overfitting, rotation, flipping, color jittering, and perspective shifts can all be utilized. This helps the model become more generalized and prevent it from expecting a specific "format" of image structure or composition. Shifting hyperparameters such as the learning rate, batch size, and optimizer will also likely yield improved results. Additionally, more ambitious pre-processing approaches, such as removing hair from the images via masking, is also worth exploring. Hopefully this can be implemented successfully as it would likely be a significant improvement to the model. As this is a pre-trained model, there is limited modifications we can make to the architecture at this point. We will likely switch to a different model or even implement our own for future cases. 
+
 ### Where does the model fit in the fitting graph? 
 
 At the moment from our plot it seems that our model is in the ideal range from model complexity since the error/loss on trading and test data is very close together and has not diverged yet. However we do note that there may be problems with visualizing the success of our model this way as it is a binary classifier, with data that is highly imbalanced, thus we plan to asses out future models using an ROC graph in order to gauge how well it is actually ‘learning’. Can see that the accuracy is very high but in a straight line that is unchanging, so that may imply that our model has overfit, or that it is not correctly classifying the malignant cases. 
+
+### Conclusion of 1st Model
+The 1st model had surprisingly decent results for a pre-trained model. However, it's important to note that the dataset has a huge skew towards target=0 (benign images). This means that the model could be incentivized to simply the image is benign when the model is insure. We will have to utilize better data sampling and larger penalizations for false negative predictions from the model. Most likely we will pivot away from this pre-trained model and experiment with more context-appropriate pre-trained models and potentially even constructing our own from scratch. 
+
+### Future Models to Implementation
+The primary model to work on next would be a custom CNN model. We would have to experiment with different architcture types and hyperparameters, but it would likely outperform pre-trained models. A CNN would be best-suited to this task as it can capture low-level features in the image (such as edges, shapes, and textures) which would be relevant for our given task. It's been proven to be effective in image classification tasks, including medical imaging, and we should probably stick to that established precedent. 
+
+Aside from this however, a number of different pre-trained models may be worth exploring. DenseNet is a model with an interesting architecture (connecting every layer to every other layer) which is likely to improve performance. GoogLeNet uses different filtration for different layers meaning it might be able to pick up on distinct features. Attempting to utilize this Inception architecture to focus each layer on different features from the metadata files might be a particularly effective strategy. 
 
 ## Reference 
 
