@@ -50,6 +50,14 @@ Finally depending on the model we decide to make we may try segmentation techniq
 
 All these methods should set up our data very well as long as we are mindful not to over augment the images. 
 
+## Milestone 3:
+
+### Updates:
+
+### Where does the model fit in the fitting graph? 
+
+At the moment from our plot it seems that our model is in the ideal range from model complexity since the error/loss on trading and test data is very close together and has not diverged yet. However we do note that there may be problems with visualizing the success of our model this way as it is a binary classifier, with data that is highly imbalanced, thus we plan to asses out future models using an ROC graph in order to gauge how well it is actually ‘learning’. Can see that the accuracy is very high but in a straight line that is unchanging, so that may imply that our model has overfit, or that it is not correctly classifying the malignant cases. 
+
 ## Reference 
 
 Image pre-processing in Computer Vision Systems for melanoma detection | IEEE conference publication | IEEE xplore. (n.d.-a). https://ieeexplore.ieee.org/document/8621507/ 
