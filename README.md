@@ -53,6 +53,7 @@ All these methods should set up our data very well as long as we are mindful not
 ## Milestone 3:
 
 ### Updates:
+The main thing we worked on for this milestone is model architecture. Our first model utalizes the ResNet18 architecture, which we customised for our implementation.
 
 ### How can we improve our current Model? 
 Improvements to the current model would primarily consist of data augmentation and data pre-processing impmrovements. To prevent overfitting, rotation, flipping, color jittering, and perspective shifts can all be utilized. This helps the model become more generalized and prevent it from expecting a specific "format" of image structure or composition. Shifting hyperparameters such as the learning rate, batch size, and optimizer will also likely yield improved results. Additionally, more ambitious pre-processing approaches, such as removing hair from the images via masking, is also worth exploring. Hopefully this can be implemented successfully as it would likely be a significant improvement to the model. As this is a pre-trained model, there is limited modifications we can make to the architecture at this point. We will likely switch to a different model or even implement our own for future cases. 
