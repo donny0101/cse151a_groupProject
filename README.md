@@ -99,13 +99,13 @@ Image pre-processing in Computer Vision Systems for melanoma detection | IEEE co
     1.  **Data Exploration**  
         Our initial data exploration focused primarily on the metadata associated with the images. This approach allows us to survey the full dataset in terms of feature analysis without the need to parse and analyze the features of all the images. We will be able to identify trends in features we expect to analyze as well as provide us with an understanding of biases that may exist in the dataset.
         To begin with, we plotted the distributions of the most critical features to understand the existing trends or biases. An immediate observation was a significant gender imbalance, with notably more males than females in the dataset. This imbalance, however, is likely irrelevant towards the analysis of our dataset for the purpose of diagnosis.
-        ![][image1]
+        <img src="images/image1.png" width="700"> <br>
         Furthermore, we observed that most samples in the data are from regions outside the head. This indicates that the head is underrepresentation might pose a challenge for our model in predicting lesions in the head area. We will have to experiment with hyperparameters and data stratification to see if we can address biases like this.
-        ![][image2]
+        <img src="images/image2.png" width="700"> <br>
         Additionally, the correlation matrix and corresponding dendrogram showed us closely related traits. While this information was not particularly useful in the overall design of our model as we would not be able to extract many of these metrics as independent features (like thickness, diameter, perimeter, etc.), it still showed us what biological traits were closely related. It also gave us insight into what features might be worth focusing on or prioritizing our model towards.
-        ![][image3]
+        <img src="images/image3.png" width="700"> <br>
         The pairplot further elaborates on this information by showing us which biological features are most correlated with one another. If a lot of strongly weighted features are strongly correlated or if a lot of weakly weighted features are strongly correlated, it could hint at some relevant features we can artificially weight with stratification or pre-processing (i.e. if the color data is found to be relatively irrelevant, pre-processing the data to use grayscale would help prevent fitting the model to data that could throw it off).
-        ![][image4]
+        <img src="images/image4.png" width="700"> <br>
 
     1.  **Preprocessing**
         1. **Hair Removal \-** For image preprocessing, we tried to implement a hair removal algorithm consisting of Grayscale Morphological Closure, identifying thin and long structures which are the individual hair strands, and bilinear interpolation. Although we did not get a working version of this preprocessing technique, we wanted to try and implement it because it could have increased the accuracy for our model by using cleaner images. For Grayscale Morphological Closure, our goal was to convert the image to grayscale and apply a morphological closure operation in order for us to enhance the darker regions of the image which in this case would correspond to hairs. Then, to identify thin and long structures corresponding to the hair follicles, we created a binary image and identified selected regions corresponding and filtered these according to aspect ratio in order to get the hair strands. Lastly, the bilinear interpolation involves creating a mask for the hair pixels that we have found, and then using the areas surrounding this to populate and replace the areas with hair. The ideal end result would be an image with all the hair removed so that our model is able to run on a completely clean image in order to see whether the lesion is malignant or benign. Unfortunately, we did not get a fully functioning version of this due to time constraints.
@@ -118,31 +118,29 @@ Image pre-processing in Computer Vision Systems for melanoma detection | IEEE co
 
 1.  # **Results Section**
 
-    1. **Preprocessing**
-        1. **Hair Removal ![][image5]![][image6]**  
+    1.  **Preprocessing**
+        1. \*\*Hair Removal<img src="images/image5.png" width="700"> <br>
            As you can see above, we were not successfully able to complete the hair removal preprocessing as we are able to get a grayscale and morphological closure, but ran into issues with identifying the thin and long structures of the image and returning the proper interpolated image without any hair follicles.
-    1. **Resnet18**  
-       **![][image7]**  
-       **![][image8]**  
-       **![][image9]**  
-       **![][image10]**  
-       **![][image11]**
-    1. **Logistic with Polynomial Features**
+    1.  **Resnet18**  
+        <img src="images/image6.png" width="700"> <br>
+        <img src="images/image7.png" width="700"> <br>
+        <img src="images/image8.png" width="700"> <br>
+    1.  **Logistic with Polynomial Features**
 
-        1. Single feature binary cross-entropy loss![][image12]![][image13]
+        1.  Single feature binary cross-entropy loss <img src="images/image9.png" width="700"> <br>
 
-        1. Double feature Binary Cross-Entropy Loss
+        1.  Double feature Binary Cross-Entropy Loss
 
-        1. ![][image14]
+        1.          <img src="images/image10.png" width="700"> <br>
 
-    1. **Logistic**
+    1.  **Logistic**
 
-![][image15]![][image16]
+        <img src="images/image11.png" width="700"> <br>
 
-1. **Second Logistic Regression**  
-   **![][image17]![][image18]**
+1.  **Second Logistic Regression**  
+     <img src="images/image12.png" width="700"> <br>
 
-1. # **Discussion Section**
+1.  # **Discussion Section**
 
     1. Preprocessing \- Although we attempted to do a hair removal image preprocessing step, we were not able to get it fully working. I think one of the issues we ran into when trying to do this process was that for identifying things and long structures and bilinear interpolation we needed a mask and mask data. This was confusing because we did not have access to this data and were a little lost in how to proceed. If done correctly, the preprocessing file would be able to remove any hairs that exist on the image, especially the lesion portion, which could hinder our model efficacy to some extent.
     1. Logistic regression; double feature \- Since our ultimate goal was to detect cancer based on images of skin lesions, it made sense to use a simple logistic regression for classification. More specifically, we wanted to use features that might have the most influence on whether the lesion was benign or cancerous, so we chose the total lesion area to perimeter ratio and longest diameter (mm) as they also give strong visual clues for the model to learn from. Establishing a baseline using a straightforward model like a logistic regression also allows us to compare the results of more complex models. We used two measurements for accuracy: cross-validation and binary cross-entropy loss. We wanted to reduce the variance associated with a single train-test split, so using cross-validation provided us with a more robust estimate of the model’s performance. Furthermore, we wanted to ensure that the model doesn’t confidently give a wrong prediction, so by using binary cross-entropy loss we were able to penalize the model when it made an incorrect prediction. In regards to the cross-validation specifically, the consistent results indicate that the model did not overfit to a particular subset of the data, which is ideal for unseen data. However, given that logistic regression assumes a linear relationship between the features, it is possible that the two features chosen interact in nonlinear ways (besides just numerically) that the model cannot capture. In terms of how the model could be improved, methods such as regularization could help generalize across the multiple datasets instead of overfitting to any single dataset.
@@ -150,12 +148,12 @@ Image pre-processing in Computer Vision Systems for melanoma detection | IEEE co
     1. Logistic regression with polynomial features; single and double feature – We chose to do another logistic regression, but with polynomial features as the polynomial features would allow the model to capture non-linear relationships between the features and the target variable. We chose the feature ‘tbp_lv_color_std_mean’ for the single feature and ‘age_approx’ in addition to ‘tbp_lv_color_std_mean’ for the double feature as we thought there could be a strong correlation for those features. For the model’s performance, the low binary cross-entropy loss (0.1127 for single feature and 0.1019 for double feature) indicates that the model’s predicted probabilities are close to the actual class labels.
     1. Resnet18: The first figure shows the training loss vs testing loss of the resnet18 model. We chose 10 epochs as this is the “golden number” in computer vision models. We can see from the blue line that our training loss steadily decreases over time. This is to be expected, as our model is simply predicting a binary 0 or 1 based on if the image is malignant or not. The size of the training set was \~20k images, with the majority of them being benign. The test loss is much different, as we first decrease, then increase, then find our lowest loss around epoch 7 before the test loss starts to increase again. The accuracy for both the training and test sets
 
-1. # **Conclusion**
+1.  # **Conclusion**
 
     1. This is where you do a mind dump on your opinions and possible future directions. Basically what you wish you could have done differently. Here you close with final thoughts.
     1. Our goal from the beginning was to develop a model capable of early skin cancer detection, with image-derived features. Although we did not have a fully accurate model by the end, this experience has demonstrated to us the importance and capabilities of machine learning. While the models we implemented showed some promise, in retrospect we could have implemented more specialized models that were not covered in class, in addition to methods like combining more features and better balanced data. Based on the results we got, it seems like Resnet18 was the most successful model, although it was also the most sophisticated model. If we had more time, model ensembling would have been worth exploring, as we already have multiple different models that could have been combined. Better preprocessed data with more malignant samples would have also likely made this process smoother. While we did attempt to implement a hair removal algorithm, in the future we would have liked to get this algorithm fully working, which would likely contribute to higher quality data altogether. Overall, this project opened our eyes up to the power and versatility of machine learning and we hope to continue to try and harness this to help solve real world problems.
 
-1. # **Statement of Collaboration**
+1.  # **Statement of Collaboration**
 
     1. Srivatsa Gangavarapu, Group Member: Contributed to code and report
     1. Michael Hu, Group Member: Contributed to code and report
