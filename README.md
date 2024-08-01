@@ -130,8 +130,7 @@ Image pre-processing in Computer Vision Systems for melanoma detection | IEEE co
         1.  Single feature binary cross-entropy loss <img src="images/image9.png" width="700"> <br>
 
         1.  Double feature Binary Cross-Entropy Loss
-
-        1.          <img src="images/image10.png" width="700"> <br>
+            <img src="images/image10.png" width="700"> <br>
 
     1.  **Logistic**
 
